@@ -24,7 +24,7 @@ module.exports = function login () {
       })
   }
 
-  return (req, res, next) => {
+  /*return (req, res, next) => {
     verifyPreLoginChallenges(req)
     models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${insecurity.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: models.User, plain: true })
       .then((authenticatedUser) => {
@@ -55,7 +55,7 @@ module.exports = function login () {
         next(error)
       })
   }
-
+//
   function verifyPreLoginChallenges (req) {
     utils.solveIf(challenges.weakPasswordChallenge, () => { return req.body.email === 'admin@' + config.get('application.domain') && req.body.password === 'admin123' })
     utils.solveIf(challenges.loginSupportChallenge, () => { return req.body.email === 'support@' + config.get('application.domain') && req.body.password === 'J6aVjTgOpRs$?5l+Zkq2AYnCE@RF§P' })
